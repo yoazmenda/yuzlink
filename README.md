@@ -1,2 +1,2 @@
 # url-shortener
-A free to use URL shortener service
+A free to use URL analytics service
