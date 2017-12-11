@@ -9,6 +9,7 @@
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 sourceCompatibility = 1.8
+version = '1.0'
 
 // Apply the application plugin to add support for building an application
 apply plugin: 'application'
@@ -27,7 +28,7 @@ dependencies {
     testCompile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.+'
 
 
-    //database library
+    //com.klix.database library
     compile group: 'org.sql2o', name: 'sql2o', version: '1.5.4'
     // postgres jdbc
     compile group: 'postgresql', name: 'postgresql', version: '9.0-801.jdbc4'
@@ -35,7 +36,17 @@ dependencies {
 
 
 }
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'com.klix.Main'
+        )
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
 
-// Define the database class for the application
+// Define the com.klix.database class for the application
 mainClassName = 'Main'
 
