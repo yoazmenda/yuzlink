@@ -1,1 +1,1 @@
-web: java -jar build/libs/Klix-all-1.0.jar
+web: java $JAVA_OPTS -jar app.jar
