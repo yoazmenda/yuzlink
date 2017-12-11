@@ -13,6 +13,8 @@ public class Application {
     public static void main(String[] args) {
 
         Spark.staticFileLocation("/public");
+
+        spark.Spark.port(443);
         spark.Spark.init();
 
     }
