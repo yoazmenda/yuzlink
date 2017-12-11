@@ -6,6 +6,9 @@ package com.klix.app;/*
 import com.klix.app.link.LinkDao;
 import spark.Spark;
 
+import static spark.Spark.post;
+
+
 public class Application {
 
     public static LinkDao linkDao;
@@ -16,6 +19,11 @@ public class Application {
 
         spark.Spark.port(443);
         spark.Spark.init();
+
+
+        post("/submit", (req, res) -> {
+            return "123456";
+        });
 
     }
 }
