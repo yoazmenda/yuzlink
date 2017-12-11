@@ -6,6 +6,10 @@
  * user guide available at https://docs.gradle.org/4.4/userguide/tutorial_java_projects.html
  */
 
+plugins {
+    id 'net.ltgt.apt' version '0.10'
+}
+
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 sourceCompatibility = 1.8
@@ -22,17 +26,21 @@ repositories {
 }
 
 dependencies {
+
+    //lombok
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.16.18'
+
+    //spark core
     compile 'com.sparkjava:spark-core:2.3'
+
+    //junit
     testCompile group: 'junit', name: 'junit', version: '4.+'
-    // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
-    testCompile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.+'
 
-
-    //com.klix.database library
+    //sql2o library
     compile group: 'org.sql2o', name: 'sql2o', version: '1.5.4'
+
     // postgres jdbc
     compile group: 'postgresql', name: 'postgresql', version: '9.0-801.jdbc4'
-
 
 
 }
@@ -40,24 +48,13 @@ jar {
     manifest {
         attributes(
                 'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-                'Main-Class': 'com.klix.Main'
+                'Main-Class': 'com.klix.app.Application'
         )
     }
     baseName = project.name + '-all'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
-task stage(type: Copy, dependsOn: [clean, build]) {
-    from jar.archivePath
-    into project.rootDir
-    rename {
-        'app.jar'
-    }
-}
-stage.mustRunAfter(clean)
 
-clean << {
-    project.file('app.jar').delete()
-}
 // Define the com.klix.database class for the application
-mainClassName = 'com.klix.Main'
+mainClassName = 'com.klix.app.Application'
 

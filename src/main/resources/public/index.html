@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Klix</title>
+</head>
+<body>
+<form action="/submit">
+    <fieldset>
+        Long URL:
+        <input id="textbox" type="text" size=35 name="url" placeholder="http://www.google.com"
+               onkeyup="stoppedTyping()"><br><br>
+        <input id="button" disabled="true" type="submit" value="Submit">
+    </fieldset>
+    <br>
+</form>
+
+<p>
+    <script type="text/javascript">
+    var textBox = document.getElementById("textbox");
+    var submitButton = document.getElementById("button");
+    stoppedTyping()
+    function stoppedTyping(){
+        submitButton.disabled = textBox.value.length == 0;
+    }
+
+
+    </script>
+</body>
+</html>
