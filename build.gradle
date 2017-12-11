@@ -36,9 +36,6 @@ dependencies {
 
 }
 
-task stage(dependsOn: ['build', 'clean'])
-build.mustRunAfter clean
-
 // Define the database class for the application
 mainClassName = 'Main'
 
