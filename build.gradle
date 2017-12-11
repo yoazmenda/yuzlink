@@ -26,8 +26,19 @@ dependencies {
     // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
     testCompile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.+'
 
+
+    //database library
+    compile group: 'org.sql2o', name: 'sql2o', version: '1.5.4'
+    // postgres jdbc
+    compile group: 'postgresql', name: 'postgresql', version: '9.0-801.jdbc4'
+
+
+
 }
 
-// Define the main class for the application
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean
+
+// Define the database class for the application
 mainClassName = 'Main'
 
