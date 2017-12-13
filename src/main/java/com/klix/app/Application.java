@@ -14,15 +14,22 @@ public class Application {
     public static LinkDao linkDao;
 
     public static void main(String[] args) {
+        int port = 443;
+        String portStr = System.getProperty("PORT");
+        if (portStr != null && !portStr.equals("")) {
+            port = Integer.valueOf(portStr);
+        }
 
+
+        System.out.println("Port: " + port);
         Spark.staticFileLocation("/public");
 
-        spark.Spark.port(443);
+        spark.Spark.port(port);
         spark.Spark.init();
 
 
         post("/submit", (req, res) -> {
-            return "123456";
+            return req.body();
         });
 
     }
