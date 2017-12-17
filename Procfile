@@ -1,1 +1,1 @@
-web: java -jar app.jar
+web: java -jar app.jar --service-port $PORT
