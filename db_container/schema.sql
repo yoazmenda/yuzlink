@@ -37,8 +37,6 @@ CREATE TABLE IF NOT EXISTS user_metadata (
     CONSTRAINT user_metadata_pk PRIMARY KEY (id)
 );
 
-
-
 -- foreign keys
 -- Reference: link_metadata_users (table: link_metadata)
 ALTER TABLE link_metadata ADD CONSTRAINT link_metadata_users
@@ -77,3 +75,5 @@ CREATE SEQUENCE short_key_seq
 -- indexes
 -- Index: url_index
 CREATE UNIQUE INDEX url_index on links (url DESC);
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO klix_admin;

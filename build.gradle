@@ -27,6 +27,14 @@ repositories {
 
 dependencies {
 
+    // freemarker - template engine
+    compile group: 'org.freemarker', name: 'freemarker', version: '2.3.20'
+
+
+    // jcommander - command line options parser
+    compile group: 'com.beust', name: 'jcommander', version: '1.7'
+
+
     //lombok
     compile group: 'org.projectlombok', name: 'lombok', version: '1.16.18'
 
