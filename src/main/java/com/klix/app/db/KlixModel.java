@@ -1,11 +1,8 @@
 package com.klix.app.db;
 
+import com.klix.app.utils.Utils;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
-
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
 
 public class KlixModel implements Model {
 
@@ -17,33 +14,38 @@ public class KlixModel implements Model {
     }
 
     @Override
-    public String shorten(String url) {
-//        try (Connection conn = sql2o.beginTransaction()) {
+    public String shorten(String longURL) {
+        try (Connection conn = sql2o.beginTransaction()) {
+
+            //1. get next value from counter
+            Long nextVal = conn.createQuery("SELECT nextval('short_key_seq');").executeAndFetchFirst(Long.class);
+            String shortKey = Utils.keyToBase62(nextVal);
+
+            //2. SELECT USER ID (currently only guest is supported)
+            Long userID = conn.createQuery("SELECT id from users where user_metadata_id = 'guest'").executeAndFetchFirst(Long.class);
+
+            //3. create link metadata
+            Long linkMetadataID = conn.createQuery("INSERT INTO link_metadata (clicks, created, user_id) VALUES (:clicks, CURRENT_TIMESTAMP, :userID)", true)
+                    .addParameter("clicks", 0)
+                    .addParameter("userID", userID)
+                    .executeUpdate()
+                    .getKey(Long.class);
 
 
+            //4. create link
+            String shortKeyResult = conn.createQuery("INSERT INTO links (id, url, link_metadata_id) VALUES (:linkID, :longURL, :linkMetadataID)", true)
 
-/*
-            conn.createQuery("insert into posts(post_uuid, title, content, publishing_date) VALUES (:post_uuid, :title, :content, :date)")
-                    .addParameter("post_uuid", postUuid)
-                    .addParameter("title", title)
-                    .addParameter("content", content)
-                    .addParameter("date", new Date())
-                    .executeUpdate();
-
+                    .addParameter("linkID", shortKey)
+                    .addParameter("longURL", longURL)
+                    .addParameter("linkMetadataID", linkMetadataID)
+                    .executeUpdate().getKey(String.class);
 
 
+            conn.commit();
 
-            categories.forEach((category) ->
-                    conn.createQuery("insert into posts_categories(post_uuid, category) VALUES (:post_uuid, :category)")
-                            .addParameter("post_uuid", postUuid)
-                            .addParameter("category", category)
-                            .executeUpdate());
-
-
-
-            conn.commit();*/
-            return url;
+            return shortKeyResult;
 //        }
+        }
     }
 
     @Override
