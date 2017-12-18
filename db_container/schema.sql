@@ -27,14 +27,13 @@ CREATE TABLE roles (
 
 -- Table: user_metadata
 CREATE TABLE user_metadata (
-    id bigserial  NOT NULL,
+    username varchar(32)  NOT NULL,
     first_name text  NOT NULL,
     last_name text  NOT NULL,
     email text  NOT NULL,
     created timestamp  NOT NULL,
-    username text  NOT NULL,
-    password_hash varchar(255)  NULL,
-    CONSTRAINT user_metadata_pk PRIMARY KEY (id)
+    password_hash varchar(255)  NOT NULL,
+    CONSTRAINT user_metadata_pk PRIMARY KEY (username)
 );
 
 -- Table: user_roles
@@ -47,7 +46,7 @@ CREATE TABLE user_roles (
 -- Table: users
 CREATE TABLE users (
     id bigserial  NOT NULL,
-    user_metadata_id int8  NOT NULL,
+    user_metadata_id varchar(32)  NOT NULL,
     CONSTRAINT users_pk PRIMARY KEY (id)
 );
 
@@ -87,7 +86,7 @@ ALTER TABLE user_roles ADD CONSTRAINT user_roles_users
 -- Reference: users_user_metadata (table: users)
 ALTER TABLE users ADD CONSTRAINT users_user_metadata
     FOREIGN KEY (user_metadata_id)
-    REFERENCES user_metadata (id)
+    REFERENCES user_metadata (username)
     NOT DEFERRABLE
     INITIALLY IMMEDIATE
 ;
