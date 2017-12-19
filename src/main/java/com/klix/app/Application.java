@@ -6,16 +6,13 @@ import com.klix.app.db.Model;
 import com.klix.app.services.link.RedirectHandler;
 import com.klix.app.services.link.ShortenHandler;
 import com.klix.app.utils.CommandLineOptions;
-import com.sun.org.apache.bcel.internal.generic.Select;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import spark.Spark;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.concurrent.ThreadPoolExecutor;
 
 import static spark.Spark.*;
 
