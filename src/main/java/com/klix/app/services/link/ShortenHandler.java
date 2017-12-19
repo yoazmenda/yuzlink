@@ -10,14 +10,29 @@ import static spark.Spark.halt;
 
 public class ShortenHandler extends AbstractHandler {
 
-    public ShortenHandler(Model model) {
+    private String host;
+    private int port;
+
+    public ShortenHandler(Model model, String host, int port) {
         super(model);
+        this.host = host;
+        this.port = port;
     }
 
     @Override
     public Object handle(Request request, Response response) throws Exception {
         String longUrl = request.queryParams("toShort");
         if (longUrl == null || longUrl.equals("")) halt(HttpStatus.BAD_REQUEST_400, "Must supply a url");
-        return model.shorten(longUrl);
+        String shortKey = model.shorten(longUrl);
+        String link = host + ":" + port + "/" + shortKey;
+        String html = "" +
+                "<div>" +
+                "<center>Here is your new link:<br><br>" +
+                "<a href=//" + link + ">" +
+                link +
+                "</a>" +
+                "</center>" +
+                "</div>";
+        return html;
     }
 }

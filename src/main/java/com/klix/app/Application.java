@@ -3,6 +3,7 @@ package com.klix.app;
 import com.beust.jcommander.JCommander;
 import com.klix.app.db.KlixModel;
 import com.klix.app.db.Model;
+import com.klix.app.services.link.RedirectHandler;
 import com.klix.app.services.link.ShortenHandler;
 import com.klix.app.utils.CommandLineOptions;
 import org.slf4j.Logger;
@@ -41,9 +42,10 @@ public class Application {
 
         Spark.staticFileLocation("/public");
 
-        spark.Spark.init();
 
-
-        post("/shorten", new ShortenHandler(model));
+        ShortenHandler shortenHandler = new ShortenHandler(model, options.serviceHost, options.servicePort);
+        RedirectHandler redirectHandler = new RedirectHandler(model, options.serviceHost, options.servicePort);
+        post("/shorten", shortenHandler);
+        get("/:id", redirectHandler);
     }
 }

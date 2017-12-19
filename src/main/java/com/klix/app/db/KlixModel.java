@@ -21,7 +21,7 @@ public class KlixModel implements Model {
             //0. is exist?
             String shortKey = conn.createQuery("SELECT id from links where url = '" + longURL + "'")
                     .executeScalar(String.class);
-            if (shortKey != null && !shortKey.isEmpty()){
+            if (shortKey != null && !shortKey.isEmpty()) {
                 return shortKey;
             }
 
@@ -52,12 +52,21 @@ public class KlixModel implements Model {
             conn.commit();
 
             return shortKeyResult;
-//        }
         }
     }
 
     @Override
     public String redirect(String key) {
-        return "your long url";
+        try (Connection conn = sql2o.open()) {
+
+
+            //0. is exist?
+            String longURL = conn.createQuery("SELECT url from links where id = '" + key + "'")
+                    .executeScalar(String.class);
+            if (longURL != null && !longURL.isEmpty()) {
+                return longURL;
+            }
+            return null;
+        }
     }
 }
