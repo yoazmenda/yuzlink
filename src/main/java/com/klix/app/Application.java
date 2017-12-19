@@ -49,14 +49,6 @@ public class Application {
                 username,
                 password);
 
-        try(org.sql2o.Connection cn = sql2o.open()){
-            cn.createQuery("select * from roles").executeAndFetch(Object.class);
-        } catch (Exception ex){
-            ex.printStackTrace();
-            halt("Can't connect to db: ");
-
-        }
-
         Model model = new KlixModel(sql2o);
 
         /***********************/
