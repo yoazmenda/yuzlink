@@ -7,7 +7,6 @@ import org.eclipse.jetty.http.HttpStatus;
 import spark.Request;
 import spark.Response;
 
-import static com.sun.xml.internal.rngom.util.Uri.isValid;
 import static spark.Spark.halt;
 
 public class ShortenHandler extends AbstractHandler {
