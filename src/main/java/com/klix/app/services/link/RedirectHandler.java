@@ -32,6 +32,6 @@ public class RedirectHandler extends AbstractHandler {
         }
         response.status(301);
         response.header("Location", redirectURL);
-        return null;
+        return response;
     }
 }

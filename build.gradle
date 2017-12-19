@@ -51,6 +51,11 @@ dependencies {
     compile group: 'postgresql', name: 'postgresql', version: '9.0-801.jdbc4'
 
 
+    // url validator
+    compile group: 'commons-validator', name: 'commons-validator', version: '1.4.0'
+
+
+
 }
 jar {
     manifest {
