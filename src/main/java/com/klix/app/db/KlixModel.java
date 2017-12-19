@@ -17,9 +17,17 @@ public class KlixModel implements Model {
     public String shorten(String longURL) {
         try (Connection conn = sql2o.beginTransaction()) {
 
+
+            //0. is exist?
+            String shortKey = conn.createQuery("SELECT id from links where url = '" + longURL + "'")
+                    .executeScalar(String.class);
+            if (shortKey != null && !shortKey.isEmpty()){
+                return shortKey;
+            }
+
             //1. get next value from counter
             Long nextVal = conn.createQuery("SELECT nextval('short_key_seq');").executeAndFetchFirst(Long.class);
-            String shortKey = Utils.keyToBase62(nextVal);
+            shortKey = Utils.keyToBase62(nextVal);
 
             //2. SELECT USER ID (currently only guest is supported)
             Long userID = conn.createQuery("SELECT id from users where user_metadata_id = 'guest'").executeAndFetchFirst(Long.class);
