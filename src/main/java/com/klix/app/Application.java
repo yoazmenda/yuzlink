@@ -40,7 +40,7 @@ public class Application {
         String dbUriString = System.getenv("DATABASE_URL");
 
 
-        if (dbUriString != null && dbUriString.startsWith("jdbc:postgresql://")){
+        if (dbUriString != null){
             URI dbUri = new URI(dbUriString);
             username = dbUri.getUserInfo().split(":")[0];
             password = dbUri.getUserInfo().split(":")[1];
