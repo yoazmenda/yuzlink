@@ -33,13 +33,19 @@ public class Application {
 
         port(options.servicePort);
 
+        String username = options.dbUsername;
+        String password = options.dbPassword;
+        String dbUrl = "jdbc:postgresql://" + options.dbHost + ":" + options.dbPort + "/" + options.database;
 
-        URI dbUri = new URI(System.getenv("DATABASE_URL"));
+        String dbUriString = System.getenv("DATABASE_URL");
 
-        String username = dbUri.getUserInfo().split(":")[0];
-        String password = dbUri.getUserInfo().split(":")[1];
-        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
 
+        if (dbUriString != null && dbUriString.startsWith("jdbc:postgresql://")){
+            URI dbUri = new URI(dbUriString);
+            username = dbUri.getUserInfo().split(":")[0];
+            password = dbUri.getUserInfo().split(":")[1];
+            dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+        }
 
         Sql2o sql2o = new Sql2o(
                 dbUrl,

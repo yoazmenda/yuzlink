@@ -26,7 +26,7 @@ public class ShortenHandler extends AbstractHandler {
 
     @Override
     public Object handle(Request request, Response response) throws Exception {
-        String longUrl = request.queryParams("toShort");
+        String longUrl = request.queryParams("textBox");
         if (longUrl == null || longUrl.equals("")) halt(HttpStatus.BAD_REQUEST_400, "Must supply a url");
         if (!longUrl.startsWith("http://") && !(longUrl.startsWith("https://"))) longUrl = "http://" + longUrl;
         if (!urlValidator.isValid(longUrl)) halt(HttpStatus.BAD_REQUEST_400, "URL not valid");
