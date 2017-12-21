@@ -30,8 +30,9 @@ public class RedirectHandler extends AbstractHandler {
             response.body("Sorry.. url not found");
             return "Sorry.. url not found";
         }
-        response.status(301);
+        response.status(302); // temp redirect - prevent browser cache to gain stats
         response.header("Location", redirectURL);
+        model.click(key);
         return response;
     }
 }

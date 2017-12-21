@@ -69,4 +69,19 @@ public class KlixModel implements Model {
             return null;
         }
     }
+
+    @Override
+    public void click(String key) {
+        try (Connection conn = sql2o.beginTransaction()) {
+
+            Long linkMetadata = conn.createQuery(
+                    "SELECT link_metadata_id FROM links where links.id = '" + key + "'")
+            .executeScalar(Long.class);
+
+            conn.createQuery("Update link_metadata Set clicks = clicks + 1 where id = " + String.valueOf(linkMetadata))
+                    .executeUpdate();
+
+            conn.commit();
+        }
+    }
 }
