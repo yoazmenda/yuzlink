@@ -35,7 +35,7 @@ public class ShortenHandler extends AbstractHandler {
         String html = "" +
                 "<div>" +
                 "<center>Here is your new link:<br><br>" +
-                "<a href=//" + link + ">" +
+                "<a href=http://" + link + ">" +
                 link +
                 "</a>" +
                 "</center>" +
