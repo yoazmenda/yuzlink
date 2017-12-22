@@ -31,7 +31,7 @@ public class ShortenHandler extends AbstractHandler {
         if (!longUrl.startsWith("http://") && !(longUrl.startsWith("https://"))) longUrl = "http://" + longUrl;
         if (!urlValidator.isValid(longUrl)) halt(HttpStatus.BAD_REQUEST_400, "URL not valid");
         String shortKey = model.shorten(longUrl);
-        String link = "klix.herokuapp.com" + "/" + shortKey;
+        String link = "yuzlink.com" + "/" + shortKey;
         String html = "" +
                 "<div>" +
                 "<center>Here is your new link:<br><br>" +
