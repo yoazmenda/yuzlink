@@ -38,10 +38,19 @@
 
 
         .content {
+            display: grid;
+            grid-template-columns: 1fr;
+            justify-items: center;
+            align-items: center;
             overflow:auto;
             grid-area: content;
             background-color: #fff;
         }
+
+        /*.content > div {*/
+            /*border-width: 1px;*/
+            /*border-style: solid;*/
+        /*}*/
 
         .footer {
             grid-area: footer;
