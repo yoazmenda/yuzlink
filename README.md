@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/yoazmenda/Klix.svg?branch=master)](https://travis-ci.org/yoazmenda/Klix)
+[![Build Status](https://travis-ci.org/yoazmenda/YuzLink.svg?branch=master)](https://travis-ci.org/yoazmenda/yuzlink)
 
-# url-shortener
+# YuzLink
 A free to use URL shortener

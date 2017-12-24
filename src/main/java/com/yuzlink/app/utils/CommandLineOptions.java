@@ -1,4 +1,4 @@
-package com.klix.app.utils;
+package com.yuzlink.app.utils;
 
 
 import com.beust.jcommander.Parameter;
@@ -15,13 +15,13 @@ public class CommandLineOptions {
     public boolean debug = false;
 
     @Parameter(names = {"--database"})
-    public String database = "klix";
+    public String database = "yuzlink";
 
     @Parameter(names = {"--db-host"})
     public String dbHost = "192.168.99.100"; //docker
 
     @Parameter(names = {"--db-username"})
-    public String dbUsername = "klix_admin";
+    public String dbUsername = "yuzlink_admin";
 
     @Parameter(names = {"--db-password"})
     public String dbPassword = "4488";

@@ -1,6 +1,6 @@
-package com.klix.app.services;
+package com.yuzlink.app.services;
 
-import com.klix.app.db.Model;
+import com.yuzlink.app.db.Model;
 import spark.Route;
 
 public abstract class AbstractHandler implements Route {

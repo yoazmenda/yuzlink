@@ -1,7 +1,7 @@
-package com.klix.app.services.link;
+package com.yuzlink.app.services.link;
 
-import com.klix.app.db.Model;
-import com.klix.app.services.AbstractHandler;
+import com.yuzlink.app.db.Model;
+import com.yuzlink.app.services.AbstractHandler;
 import org.apache.commons.validator.routines.UrlValidator;
 import org.eclipse.jetty.http.HttpStatus;
 import spark.Request;

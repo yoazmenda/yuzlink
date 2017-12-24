@@ -1,11 +1,11 @@
-package com.klix.app;
+package com.yuzlink.app;
 
 import com.beust.jcommander.JCommander;
-import com.klix.app.db.KlixModel;
-import com.klix.app.db.Model;
-import com.klix.app.services.link.RedirectHandler;
-import com.klix.app.services.link.ShortenHandler;
-import com.klix.app.utils.CommandLineOptions;
+import com.yuzlink.app.db.YuzLink;
+import com.yuzlink.app.db.Model;
+import com.yuzlink.app.services.link.RedirectHandler;
+import com.yuzlink.app.services.link.ShortenHandler;
+import com.yuzlink.app.utils.CommandLineOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sql2o.Sql2o;
@@ -52,7 +52,7 @@ public class Application {
                 username,
                 password);
 
-        Model model = new KlixModel(sql2o);
+        Model model = new YuzLink(sql2o);
 
         /***********************/
 

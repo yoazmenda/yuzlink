@@ -20,8 +20,8 @@ ADD ./schema.sql /db/schema.sql
 ADD ./init.sql /db/init.sql
 
 RUN /etc/init.d/postgresql start && sudo -u postgres psql < /db/setup.sql && /etc/init.d/postgresql stop
-RUN /etc/init.d/postgresql start && sudo -u postgres psql -d klix < /db/schema.sql && /etc/init.d/postgresql stop
-RUN /etc/init.d/postgresql start && sudo -u postgres psql -d klix < /db/init.sql && /etc/init.d/postgresql stop
+RUN /etc/init.d/postgresql start && sudo -u postgres psql -d yuzlink < /db/schema.sql && /etc/init.d/postgresql stop
+RUN /etc/init.d/postgresql start && sudo -u postgres psql -d yuzlink < /db/init.sql && /etc/init.d/postgresql stop
 
 EXPOSE 5432
 

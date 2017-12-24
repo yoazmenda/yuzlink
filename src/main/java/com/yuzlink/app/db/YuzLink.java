@@ -1,15 +1,15 @@
-package com.klix.app.db;
+package com.yuzlink.app.db;
 
-import com.klix.app.utils.Utils;
+import com.yuzlink.app.utils.Utils;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
-public class KlixModel implements Model {
+public class YuzLink implements Model {
 
 
     private final Sql2o sql2o;
 
-    public KlixModel(Sql2o sql2o) {
+    public YuzLink(Sql2o sql2o) {
         this.sql2o = sql2o;
     }
 

@@ -1,6 +1,6 @@
 --  Grant privileges
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO klix_admin;
-GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public to klix_admin;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO yuzlink_admin;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public to yuzlink_admin;
 
 -- insert roles
 INSERT INTO ROLES (id, role_name) values (1, 'ADMIN');

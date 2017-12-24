@@ -61,7 +61,7 @@ jar {
     manifest {
         attributes(
                 'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-                'Main-Class': 'com.klix.app.Application'
+                'Main-Class': 'com.yuzlink.app.Application'
         )
     }
     baseName = project.name + '-all'
@@ -79,6 +79,6 @@ stage.mustRunAfter(clean)
 clean << {
     project.file('app.jar').delete()
 }
-// Define the com.klix.database class for the application
-mainClassName = 'com.klix.app.Application'
+// Define the yuzlink.database class for the application
+mainClassName = 'com.yuzlink.app.Application'
 

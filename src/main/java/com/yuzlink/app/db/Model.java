@@ -1,4 +1,4 @@
-package com.klix.app.db;
+package com.yuzlink.app.db;
 
 public interface Model {
 

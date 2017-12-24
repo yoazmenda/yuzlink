@@ -1,4 +1,4 @@
-package com.klix.app.utils;
+package com.yuzlink.app.utils;
 
 import org.junit.Test;
 
