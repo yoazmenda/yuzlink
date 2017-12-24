@@ -13,13 +13,13 @@
 
         .grid-container {
             display: grid;
-            grid-template-columns: 1fr 260px 260px 260px 1fr ;
-            grid-template-rows: 20px repeat(4, 1fr) ;
+            grid-template-rows: 20px 40% 400px 20%;
+            grid-template-columns: 18% repeat(3, 1fr) 18% ;
             grid-template-areas:
                     ". . . . ."
                     " left-side header header header right-side "
                     " left-side content content content right-side "
-                    " left-side . . footer right-side ";
+                    " left-side footer footer footer right-side ";
             grid-gap: 0px;
 
         }
@@ -30,13 +30,15 @@
             font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
         }
 
-        .header { ;
+        .header {
+            font-size: large;
             grid-area: header;
             background-color: #4B75B3;
         }
 
 
         .content {
+            overflow:auto;
             grid-area: content;
             background-color: #fff;
         }
@@ -54,10 +56,10 @@
             grid-area: left-side;
         }
 
-        div {
-            border-width: 1px;
-            border-style: solid;
-        }
+        /*div {*/
+            /*border-width: 1px;*/
+            /*border-style: solid;*/
+        /*}*/
 
         .header {
             display: grid;
