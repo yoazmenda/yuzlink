@@ -6,13 +6,18 @@
     <title>YuzLink</title>
     <link rel="stylesheet" type="text/css" href="styles/style.css" media="all">
     <link rel="icon" type="image/png" href="images/icon.png">
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
   (adsbygoogle = window.adsbygoogle || []).push({
     google_ad_client: "ca-pub-8553294744501095",
     enable_page_level_ads: true
   });
-</script>
+
+    </script>
     <script type="text/javascript" src="js/app.js"></script>
 
 </head>
@@ -33,7 +38,7 @@
                 <label class="description" for="textBox">Long Address: </label>
                 <div>
                     <input id="textBox" name="textBox" class="element text medium" type="text"
-                           placeholder="http://www.google.com" onkeyup="stoppedTyping()"/>
+                           placeholder="http://www.google.com"/>
                 </div>
             </li>
 
@@ -49,15 +54,5 @@
     </div>
 </div>
 <img id="bottom" src="images/bottom.png" alt="">
-<script type="text/javascript">
-    var textBox = document.getElementById("textBox");
-    var submitButton = document.getElementById("button");
-    stoppedTyping()
-    function stoppedTyping(){
-        submitButton.disabled = textBox.value.length == 0;
-    }
-
-
-    </script>
 </body>
 </html>
