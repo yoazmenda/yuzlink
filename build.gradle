@@ -50,13 +50,16 @@ dependencies {
     // postgres jdbc
     compile group: 'postgresql', name: 'postgresql', version: '9.0-801.jdbc4'
 
-
     // url validator
     compile group: 'commons-validator', name: 'commons-validator', version: '1.4.0'
 
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.3'
 
-
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.3'
 }
+
 jar {
     manifest {
         attributes(
