@@ -8,16 +8,9 @@
 
 }
 
-body {
-    background-color: #CDDCEC;
-    background: #CDDCEC;
-    font-family: "Lucida Grande", "Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
-}
-
 .header {
     font-size: large;
     grid-area: header;
-    background-color: #4B75B3;
 }
 
 .logo {
@@ -30,13 +23,11 @@ body {
     grid-template-areas: " . content-inner .";
     overflow: auto;
     grid-area: content;
-    background-color: #fff;
     justify-items: center;
     align-items: stretch;
 }
 
 .content-inner {
-    /*background-color: darkgoldenrod;*/
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-area: content-inner;
@@ -45,34 +36,6 @@ body {
 
 .shortener {
     font-size: small;
-}
-
-form ul {
-    font-size: 100%;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-}
-
-form li {
-    display: block;
-    margin: 0;
-    padding: 4px 5px 2px 9px;
-    position: relative;
-}
-
-* html form li {
-    height: 1%;
-}
-
-.content-inner > div:nth-child(odd) {
-
-    /*background-color: #529214;*/
-}
-
-.content-inner > div:nth-child(even) {
-    /*background-color: #d12f19;*/
 }
 
 .footer {
@@ -87,11 +50,6 @@ form li {
 .left-side {
     grid-area: left-side;
 }
-
-/*div {*/
-/*border-width: 1px;*/
-/*border-style: solid;*/
-/*}*/
 
 .header {
     display: grid;
@@ -124,8 +82,4 @@ form li {
 .user:hover {
     text-decoration: underline;
     cursor: pointer;
-}
-
-.active {
-    text-decoration: underline;
 }

@@ -1,0 +1,25 @@
+
+body {
+    background-color: #CDDCEC;
+    font-family: "Lucida Grande", "Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+}
+
+
+.active {
+    text-decoration: underline;
+}
+
+.header {
+    background-color: #4B75B3;
+}
+
+
+.content {
+    background-color: #fff;
+}
+
+
+/*div {*/
+/*border-width: 1px;*/
+/*border-style: solid;*/
+/*}*/
