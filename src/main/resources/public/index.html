@@ -13,21 +13,17 @@
 
         .grid-container {
             display: grid;
-            grid-template-rows: 20px 40% 400px 20%;
-            grid-template-columns: 18% repeat(3, 1fr) 18% ;
-            grid-template-areas:
-                    ". . . . ."
-                    " left-side header header header right-side "
-                    " left-side content content content right-side "
-                    " left-side footer footer footer right-side ";
+            grid-template-rows: 20px 40% 300px 20%;
+            grid-template-columns: 18% repeat(3, 1fr) 18%;
+            grid-template-areas: ". . . . ." " left-side header header header right-side " " left-side content content content right-side " " left-side footer footer footer right-side ";
             grid-gap: 0px;
 
         }
 
         body {
             background-color: #CDDCEC;
-            background:#CDDCEC;
-            font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+            background: #CDDCEC;
+            font-family: "Lucida Grande", "Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
         }
 
         .header {
@@ -36,21 +32,60 @@
             background-color: #4B75B3;
         }
 
+        .logo {
+            margin: 0 auto;
+        }
 
         .content {
             display: grid;
-            grid-template-columns: 1fr;
-            justify-items: center;
-            align-items: center;
-            overflow:auto;
+            grid-template-columns: 7% 1fr 7%;
+            grid-template-areas: " . content-inner .";
+            overflow: auto;
             grid-area: content;
             background-color: #fff;
+            justify-items: center;
+            align-items: stretch;
         }
 
-        /*.content > div {*/
-            /*border-width: 1px;*/
-            /*border-style: solid;*/
-        /*}*/
+        .content-inner {
+            /*background-color: darkgoldenrod;*/
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            grid-area: content-inner;
+
+        }
+
+        .shortener {
+            font-size: small;
+        }
+
+        form ul {
+            font-size: 100%;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        form li {
+            display: block;
+            margin: 0;
+            padding: 4px 5px 2px 9px;
+            position: relative;
+        }
+
+        * html form li {
+            height: 1%;
+        }
+
+        .content-inner > div:nth-child(odd) {
+
+            /*background-color: #529214;*/
+        }
+
+        .content-inner > div:nth-child(even) {
+            /*background-color: #d12f19;*/
+        }
 
         .footer {
             grid-area: footer;
@@ -66,21 +101,21 @@
         }
 
         /*div {*/
-            /*border-width: 1px;*/
-            /*border-style: solid;*/
+        /*border-width: 1px;*/
+        /*border-style: solid;*/
         /*}*/
 
         .header {
             display: grid;
             grid-template-columns: 1fr 200px;
-            grid-template-rows: 1fr ;
+            grid-template-rows: 1fr;
             padding: 15px;
         }
 
         .user {
             justify-self: end;
         }
-        
+
         .menu {
             justify-self: start;
             display: grid;
@@ -90,7 +125,6 @@
 
         .menu-item {
             justify-self: center;
-
 
         }
 
@@ -108,10 +142,7 @@
             text-decoration: underline;
         }
 
-
     </style>
-
-
 
 
 </head>
@@ -133,8 +164,10 @@
     </div>
     <div class="footer">
 
-        <a class="github-button" href="https://github.com/yoazmenda" aria-label="Follow @yoazmenda on GitHub">Follow @yoazmenda</a>
-        <a class="github-button" href="https://github.com/yoazmenda/yuzlink/issues" aria-label="Issue ntkme/github-buttons on GitHub">Have an Issue?</a>
+        <a class="github-button" href="https://github.com/yoazmenda" aria-label="Follow @yoazmenda on GitHub">Follow
+            @yoazmenda</a>
+        <a class="github-button" href="https://github.com/yoazmenda/yuzlink/issues"
+           aria-label="Issue ntkme/github-buttons on GitHub">Have an Issue?</a>
 
     </div>
 </div>
