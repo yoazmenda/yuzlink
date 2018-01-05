@@ -8,7 +8,7 @@ $(document).ready(function () {
     $('.menu-item').click(function () {
         var activeElement = this;
         requestName = $(this).attr('name');
-        $('.content').load('/components/' + requestName + ".html", function (responseTxt, statusTxt, xhr) {
+        $('.content').load('/templates/' + requestName + ".html", function (responseTxt, statusTxt, xhr) {
                 if (statusTxt == "success") {
                     $(".menu-item").removeClass('active');
                     $(activeElement).addClass('active');
@@ -18,7 +18,7 @@ $(document).ready(function () {
     });
 
     $('.content').load(
-        "/components/home.html"
+        "/templates/home.html"
     )
 
 
