@@ -1,6 +1,6 @@
 package com.yuzlink.app.db;
 
-import com.yuzlink.app.utils.Utils;
+import com.yuzlink.app.utils.MathUtils;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
@@ -27,7 +27,7 @@ public class YuzLink implements Model {
 
             //1. get next value from counter
             Long nextVal = conn.createQuery("SELECT nextval('short_key_seq');").executeAndFetchFirst(Long.class);
-            shortKey = Utils.keyToBase62(nextVal);
+            shortKey = MathUtils.keyToBase62(nextVal);
 
             //2. SELECT USER ID (currently only guest is supported)
             Long userID = conn.createQuery("SELECT id from users where user_metadata_id = 'guest'").executeAndFetchFirst(Long.class);

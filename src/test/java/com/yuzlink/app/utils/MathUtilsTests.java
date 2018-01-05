@@ -4,10 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class MathUtilsTests
-
-
-{
+public class MathUtilsTests{
     @Test
     public void testConvertBases(){
         assertEquals("110", MathUtils.decimalToBase(6l, 2));
@@ -19,7 +16,6 @@ public class MathUtilsTests
 
     @Test
     public void testBase62(){
-        assertEquals("08qIm7", Utils.keyToBase62(124577723l));
+        assertEquals("08qIm7", MathUtils.keyToBase62(124577723l));
     }
-
 }

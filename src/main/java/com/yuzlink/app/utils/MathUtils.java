@@ -1,11 +1,10 @@
 package com.yuzlink.app.utils;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 public class MathUtils {
-
-    private static char[] ALPHABET_62 = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-
+    private static final char[] ALPHABET_62 = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
     public static String decimalToBase(long number, int base) {
         Stack<Integer> stack = new Stack<>();
@@ -23,11 +22,18 @@ public class MathUtils {
             result[i++] = ALPHABET_62[stack.pop()];
         }
         return new String(result);
-
-
     }
 
-
+    public static String keyToBase62(long decimal) {
+        String key = decimalToBase(decimal, 62);
+        int leftToFill = 6 - key.length();
+        if (leftToFill == 0) {
+            return key;
+        }
+        char[] zeros = new char[leftToFill];
+        Arrays.fill(zeros, '0');
+        return new String(zeros) + key;
+    }
 }
 
 
