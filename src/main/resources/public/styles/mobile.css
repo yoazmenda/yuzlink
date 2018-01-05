@@ -1,14 +1,20 @@
+body {
+    background-color: brown;
+}
+
+
 .grid-container {
     display: grid;
-    grid-template-rows: 20px 40% 300px 20%;
-    grid-template-columns: 18% repeat(3, 1fr) 18%;
-    grid-template-areas: ". . . . ." " left-side header header header right-side " " left-side content content content right-side " " left-side footer footer footer right-side ";
+    grid-template-rows: 10% 80% 10%;
+    grid-template-areas:
+    " header "
+    " content "
+    " footer ";
     grid-gap: 0px;
 }
 
-.header {
-    font-size: large;
-    grid-area: header;
+div {
+    /*border: black solid;*/
 }
 
 .logo {
@@ -16,9 +22,6 @@
 }
 
 .content {
-    display: grid;
-    grid-template-columns: 7% 1fr 7%;
-    grid-template-areas: " . content-inner .";
     overflow: auto;
     grid-area: content;
     justify-items: center;
@@ -50,9 +53,10 @@
 }
 
 .header {
+    font-size: large;
     display: grid;
-    grid-template-columns: 1fr 200px;
-    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /*grid-template-rows: 1fr;*/
     padding: 15px;
 }
 
@@ -63,7 +67,7 @@
 .menu {
     justify-self: start;
     display: grid;
-    grid-template-columns: repeat(3, 100px) 1fr;
+    grid-template-columns: repeat(3, 80px) 1fr;
     grid-template-rows: 1fr;
 }
 
