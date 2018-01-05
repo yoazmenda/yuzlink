@@ -1,31 +1,31 @@
-body {
-    background-color: brown;
-}
 
 
 .grid-container {
     display: grid;
-    grid-template-rows: 10% 80% 10%;
+    grid-auto-columns: auto;
     grid-template-areas:
     " header "
     " content "
     " footer ";
-    grid-gap: 0px;
-}
-
-div {
-    /*border: black solid;*/
 }
 
 .logo {
     margin: 0 auto;
 }
 
+div {
+    border: black solid;
+}
+
 .content {
-    overflow: auto;
     grid-area: content;
     justify-items: center;
     align-items: stretch;
+}
+
+.shortener {
+    display: grid;
+    grid-auto-columns: 1fr 1fr 1fr;
 }
 
 .content-inner {
@@ -35,28 +35,15 @@ div {
 
 }
 
-.shortener {
-    font-size: small;
-}
-
 .footer {
     grid-area: footer;
     justify-self: end;
 }
 
-.right-side {
-    grid-area: right-side;
-}
-
-.left-side {
-    grid-area: left-side;
-}
-
 .header {
     font-size: large;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    /*grid-template-rows: 1fr;*/
+    grid-template-columns: 1fr 1fr;
     padding: 15px;
 }
 
@@ -65,23 +52,7 @@ div {
 }
 
 .menu {
-    justify-self: start;
     display: grid;
-    grid-template-columns: repeat(3, 80px) 1fr;
-    grid-template-rows: 1fr;
-}
-
-.menu-item {
-    justify-self: center;
-
-}
-
-.menu-item:hover {
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.user:hover {
-    text-decoration: underline;
-    cursor: pointer;
+    grid-template-columns: repeat(3, 80px);
+    justify-items: center;
 }
