@@ -7,14 +7,14 @@ $(document).ready(function () {
 
     $('.menu-item').click(function () {
         var activeElement = this;
-        requestName = $(this).attr('name');
-        $('.content').load('./templates/' + requestName + ".html", function (responseTxt, statusTxt, xhr) {
-                if (statusTxt == "success") {
-                    $(".menu-item").removeClass('active');
-                    $(activeElement).addClass('active');
-                }
-            }
-        )
+        var requestName = $(this).attr('name');
+
+        $.ajax('templates/' + requestName + '.html')
+            .done(function (data) {
+                $('.content').html(data);
+                $(".menu-item").removeClass('active');
+                $(activeElement).addClass('active');
+            });
     });
 
     $('.content').load(
