@@ -13,9 +13,9 @@
     margin: 0 auto;
 }
 
-div {
-    border: black solid;
-}
+/*div {*/
+    /*border: black solid;*/
+/*}*/
 
 .content {
     grid-area: content;
