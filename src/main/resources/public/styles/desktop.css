@@ -1,4 +1,5 @@
 
+
 .grid-container {
     display: grid;
     grid-template-rows: 20px 40% 300px 20%;
@@ -22,36 +23,22 @@
     margin: 0 auto;
 }
 
-.content > div {
-    border: black solid;
-}
+
+
 
 .content {
     display: grid;
-    grid-template-areas: "  content-inner ";
+    grid-template-areas: " . content-inner .";
     overflow: auto;
     grid-area: content;
     justify-items: center;
-    align-items: stretch;
 }
 
 .content-inner {
+    width: 520px;
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-area: content-inner;
-}
-
-.content-inner > div {
-    border: yellow dashed;
-}
-
-.grid-container > div {
-    border-color: red;
-}
-
-
-.shortener {
-    font-size: small;
 }
 
 .footer {

@@ -13,19 +13,10 @@
     margin: 0 auto;
 }
 
-/*div {*/
-    /*border: black solid;*/
-/*}*/
-
 .content {
     grid-area: content;
     justify-items: center;
     align-items: stretch;
-}
-
-.shortener {
-    display: grid;
-    grid-auto-columns: 1fr 1fr 1fr;
 }
 
 .content-inner {

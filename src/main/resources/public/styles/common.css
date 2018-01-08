@@ -1,4 +1,10 @@
+/*div {*/
+    /*border: black solid;*/
+/*}*/
 
+/*.shortener > div {*/
+    /*border: yellow dashed;*/
+/*}*/
 body {
     background-color: #CDDCEC;
     font-family: "Lucida Grande", "Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
@@ -25,15 +31,37 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    font-weight: 500;
+
 }
 
 #shorten_button {
     width: 100%;
     background-color: #4CAF50;
     color: white;
-    padding: 14px 20px;
+    padding: 8px 10px;
     margin: 8px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-weight: 900;
+    font-size: large;
+}
+
+
+
+.shortener {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+
+.shortener_text {
+    width: 90%;
+}
+
+.shortener_button {
+    width: 90%;
 }

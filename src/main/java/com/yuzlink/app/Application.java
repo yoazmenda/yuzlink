@@ -60,18 +60,10 @@ public class Application {
 
         Model model = new ModelImpl(sql2o);
 
-        /***********************/
-
+        /*****    Routes       ******/
         Spark.staticFileLocation("/public");
+        get("/:id", new RedirectHandler(model, options.serviceHost, options.servicePort));
+        post("/shorten", new ShortenHandler(model, options.serviceHost, options.servicePort));
 
-
-        ShortenHandler shortenHandler = new ShortenHandler(model, options.serviceHost, options.servicePort);
-        RedirectHandler redirectHandler = new RedirectHandler(model, options.serviceHost, options.servicePort);
-        GetUrlsHandler getUrlsHandler = new GetUrlsHandler(model);
-
-        get("/:id", redirectHandler);
-
-        post("/api/:userID/shorten", shortenHandler);
-        get("/api/:userID/urls", getUrlsHandler);
     }
 }
