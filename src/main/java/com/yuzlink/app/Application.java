@@ -1,20 +1,26 @@
 package com.yuzlink.app;
 
 import com.beust.jcommander.JCommander;
-import com.yuzlink.app.db.YuzLink;
+import com.yuzlink.app.db.ModelImpl;
 import com.yuzlink.app.db.Model;
-import com.yuzlink.app.services.link.RedirectHandler;
-import com.yuzlink.app.services.link.ShortenHandler;
+import com.yuzlink.app.handlers.GetUrlsHandler;
+import com.yuzlink.app.handlers.RedirectHandler;
+import com.yuzlink.app.handlers.ShortenHandler;
 import com.yuzlink.app.utils.CommandLineOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sql2o.Sql2o;
 import spark.Spark;
 
+
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import static spark.Spark.*;
+import static spark.Spark.get;
+import static spark.Spark.port;
+import static spark.Spark.post;
+
+//import static spark.Spark.*;
 
 
 public class Application {
@@ -52,7 +58,7 @@ public class Application {
                 username,
                 password);
 
-        Model model = new YuzLink(sql2o);
+        Model model = new ModelImpl(sql2o);
 
         /***********************/
 
@@ -61,7 +67,11 @@ public class Application {
 
         ShortenHandler shortenHandler = new ShortenHandler(model, options.serviceHost, options.servicePort);
         RedirectHandler redirectHandler = new RedirectHandler(model, options.serviceHost, options.servicePort);
-        post("/shorten", shortenHandler);
+        GetUrlsHandler getUrlsHandler = new GetUrlsHandler(model);
+
         get("/:id", redirectHandler);
+
+        post("/api/:userID/shorten", shortenHandler);
+        get("/api/:userID/urls", getUrlsHandler);
     }
 }

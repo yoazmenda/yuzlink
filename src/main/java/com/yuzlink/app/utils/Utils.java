@@ -1,9 +1,14 @@
 package com.yuzlink.app.utils;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Stack;
 
-public class MathUtils {
+public class Utils {
     private static final char[] ALPHABET_62 = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
     public static String decimalToBase(long number, int base) {
@@ -33,6 +38,17 @@ public class MathUtils {
         char[] zeros = new char[leftToFill];
         Arrays.fill(zeros, '0');
         return new String(zeros) + key;
+    }
+
+    public static String writeListToJsonArray(List list) throws IOException {
+
+            final ByteArrayOutputStream out = new ByteArrayOutputStream();
+            final ObjectMapper mapper = new ObjectMapper();
+
+            mapper.writeValue(out, list);
+
+            final byte[] data = out.toByteArray();
+            return new String(data);
     }
 }
 

@@ -1,15 +1,20 @@
 package com.yuzlink.app.db;
 
-import com.yuzlink.app.utils.MathUtils;
+import com.yuzlink.app.utils.Utils;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
+import org.sql2o.data.Table;
 
-public class YuzLink implements Model {
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ModelImpl implements Model {
 
 
     private final Sql2o sql2o;
 
-    public YuzLink(Sql2o sql2o) {
+    public ModelImpl(Sql2o sql2o) {
         this.sql2o = sql2o;
     }
 
@@ -27,7 +32,7 @@ public class YuzLink implements Model {
 
             //1. get next value from counter
             Long nextVal = conn.createQuery("SELECT nextval('short_key_seq');").executeAndFetchFirst(Long.class);
-            shortKey = MathUtils.keyToBase62(nextVal);
+            shortKey = Utils.keyToBase62(nextVal);
 
             //2. SELECT USER ID (currently only guest is supported)
             Long userID = conn.createQuery("SELECT id from users where user_metadata_id = 'guest'").executeAndFetchFirst(Long.class);
@@ -82,6 +87,31 @@ public class YuzLink implements Model {
                     .executeUpdate();
 
             conn.commit();
+        }
+    }
+
+    @Override
+    public List<UrlDto> getUrls(Long userID, int limit, int offset) {
+        try (Connection conn = sql2o.open()) {
+            if (limit > 10) limit = 10;
+            if (limit < 0) limit = 0;
+            //0. is exist?
+
+            String sql = " select links.id, url, clicks, created from " +
+                    " links join link_metadata on link_metadata_id = link_metadata.id "+
+                    " where user_id = " + userID + " order by created desc limit " + limit + " offset " + offset +";";
+            Table result = conn.createQuery(sql).executeAndFetchTable();
+            List<UrlDto> urls = new ArrayList<>();
+            result.rows().forEach( row -> {
+                urls.add(new UrlDto(
+                        String.valueOf(row.getLong("id"))
+                        ,row.getString("url")
+                        ,row.getLong("clicks")
+                        , (Timestamp) row.getDate("created")));
+            });
+
+
+            return urls;
         }
     }
 }

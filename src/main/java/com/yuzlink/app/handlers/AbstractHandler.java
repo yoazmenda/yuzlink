@@ -1,4 +1,4 @@
-package com.yuzlink.app.services;
+package com.yuzlink.app.handlers;
 
 import com.yuzlink.app.db.Model;
 import spark.Route;
